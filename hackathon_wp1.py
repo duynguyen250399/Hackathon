@@ -35,6 +35,7 @@ def integer_to_vietnamese_numeral(n):
 
         i = 0
         j = len(_n)
+
         while i in range(len(_n)):
             _pas = False
             # special case of #1:
@@ -97,4 +98,4 @@ def integer_to_vietnamese_numeral(n):
 
     return (_a)
 
-print(integer_to_vietnamese_numeral(100))
+print(integer_to_vietnamese_numeral(213000))
