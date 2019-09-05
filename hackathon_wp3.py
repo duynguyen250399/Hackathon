@@ -179,4 +179,4 @@ def say_vietnamese_numeral(list, region = 'north'):
             time.sleep(0.8)
 
 
-print(integer_to_vietnamese_numeral(1234, 'south'))
+print(integer_to_vietnamese_numeral(213000, 'south'))

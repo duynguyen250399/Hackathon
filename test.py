@@ -9,11 +9,9 @@ base_dir = './sounds/'
 
 pygame.init()
 
-for t in test:
-    sound_dir = base_dir + t + '.ogg'
-    print(sound_dir)
-    play_sound(sound_dir)
-    time.sleep(0.8)
+pygame.mixer.music.load('./sounds/test.mp3')
+pygame.mixer.music.play()
+time.sleep(10)
 
 # sound = pygame.mixer.Sound('./sounds/mot1.ogg')
 # sound.play()
