@@ -1,5 +1,42 @@
-_number = {0: 'không', 1: 'một', 2: 'hai', 3: 'ba', 4: 'bốn',
-           5: 'năm', 6: 'sáu', 7: 'bảy', 8: 'tám', 9: 'chín'}
+import pygame
+import time
+
+_number = {
+    0: 'không',
+    1: 'một',
+    2: 'hai',
+    3: 'ba',
+    4: 'bốn',
+    5: 'năm',
+    6: 'sáu',
+    7: 'bảy',
+    8: 'tám',
+    9: 'chín'
+}
+
+file_names = {
+    'không': 'khong',
+    'một': 'mot1',
+    'mốt': 'mot2',
+    'hai': 'hai',
+    'ba': 'ba',
+    'bốn': 'bon',
+    'năm': 'nam',
+    'lăm': 'lam',
+    'sáu': 'sau',
+    'bảy': 'bay',
+    'tám': 'tam',
+    'chín': 'chin',
+    'mười': 'muoi1',
+    'mươi': 'muoi2',
+    'trăm': 'tram',
+    'nghìn': 'nghin',
+    'triệu': 'trieu',
+    'tỷ': 'ty',
+    'ngàn': 'ngan',
+    'linh': 'linh',
+    'lẻ': 'le'
+}
 
 
 # func to put place value in
@@ -24,7 +61,16 @@ def _place_value2(_a, j, region):
     return _a
 
 
-def integer_to_vietnamese_numeral(n, region = 'north'):
+def play_sound(sound_dir):
+    pygame.mixer.music.load(sound_dir)
+    pygame.mixer.music.play()
+
+
+def integer_to_vietnamese_numeral(n, region='north'):
+    pygame.init()
+
+    base_dir = './sounds/'
+
     # check if input have any error
     if type(n) != int:
         raise TypeError("Not an integer")
@@ -79,7 +125,7 @@ def integer_to_vietnamese_numeral(n, region = 'north'):
                     else:
                         _a.append(_number[int(_n[i])])
                 elif (j + 1) % 3 == 0:
-                    if int(_n[i + 1]) != 0 :
+                    if int(_n[i + 1]) != 0:
                         # handle 'linh' and 'lẻ'
                         if region == 'north':
                             _a.append('linh')
@@ -106,11 +152,16 @@ def integer_to_vietnamese_numeral(n, region = 'north'):
             i += 1
             j -= 1
 
-    # play sounds here!
-    
+    # play sound files here!
+    for n in _a:
+        sound_dir = base_dir + file_names[n] + '.ogg'
+        play_sound(sound_dir)
+        time.sleep(0.8)
+
 
     _a = ' '.join(_a)
 
     return (_a)
 
-print(integer_to_vietnamese_numeral(10001005, 'south'))
+
+print(integer_to_vietnamese_numeral(123456789, 'south'))
