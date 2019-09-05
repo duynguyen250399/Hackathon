@@ -1,41 +1,15 @@
-import pygame
-import time
-
 _number = {
-    0: 'không',
-    1: 'một',
-    2: 'hai',
-    3: 'ba',
-    4: 'bốn',
-    5: 'năm',
-    6: 'sáu',
-    7: 'bảy',
-    8: 'tám',
-    9: 'chín'
-}
-
-file_names = {
-    'không': 'khong',
-    'một': 'mot1',
-    'mốt': 'mot2',
-    'hai': 'hai',
-    'ba': 'ba',
-    'bốn': 'bon',
-    'năm': 'nam',
-    'lăm': 'lam',
-    'sáu': 'sau',
-    'bảy': 'bay',
-    'tám': 'tam',
-    'chín': 'chin',
-    'mười': 'muoi1',
-    'mươi': 'muoi2',
-    'trăm': 'tram',
-    'nghìn': 'nghin',
-    'triệu': 'trieu',
-    'tỷ': 'ty',
-    'ngàn': 'ngan',
-    'linh': 'linh',
-    'lẻ': 'le'
+    0: 'zero',
+    1: 'one',
+    2: 'two',
+    3: 'three',
+    4: 'four',
+    5: 'five',
+    6: 'six',
+    7: 'seven',
+    8: 'eight',
+    9: 'nine',
+    10: 'ten'
 }
 
 
@@ -60,11 +34,8 @@ def _place_value2(_a, j, region):
         _a.append('tỷ')
     return _a
 
-def integer_to_vietnamese_numeral(n, region='north', activate_tts = False):
-    pygame.init()
 
-    base_dir = './sounds/'
-
+def integer_to_vietnamese_numeral(n, region='north'):
     # check if input have any error
     if type(n) != int:
         raise TypeError("Not an integer")
@@ -146,37 +117,9 @@ def integer_to_vietnamese_numeral(n, region='north', activate_tts = False):
             i += 1
             j -= 1
 
-    # play sound files here!
-    say_vietnamese_numeral(_a, region)
-
     _a = ' '.join(_a)
 
     return (_a)
 
 
-def say_vietnamese_numeral(list, region = 'north'):
-    pygame.init()
-    if list == [] or list == None:
-        raise ValueError('List is empty or none')
-
-    if region != 'north' and region != 'south':
-        raise ValueError('Invalid vietnamese region')
-
-    base_dir = './sounds/' + region + '/'
-
-    if region == 'north':
-        for n in list:
-            sound_dir = base_dir + file_names[n] + '.ogg'
-            pygame.mixer.music.load(sound_dir)
-            pygame.mixer.music.play()
-            time.sleep(0.8)
-    else:
-
-        for n in list:
-            sound_dir = base_dir + file_names[n] + '_south.mp3'
-            pygame.mixer.music.load(sound_dir)
-            pygame.mixer.music.play()
-            time.sleep(0.9)
-
-
-print(integer_to_vietnamese_numeral(1000001, 'south'))
+print(integer_to_vietnamese_numeral(10001005, 'south'))
