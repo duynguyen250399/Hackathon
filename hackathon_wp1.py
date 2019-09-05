@@ -43,7 +43,7 @@ def integer_to_vietnamese_numeral(n):
                 if i != 0:
                     if (j + 1) % 3 == 0:
                         _a.append('mười')
-                        _pas = None
+                        _pas = True
                     elif (j - 1) % 3 == 0:
                         if int(_n[i - 1]) not in (0, 1):
                             _a.append('mốt')
@@ -98,4 +98,4 @@ def integer_to_vietnamese_numeral(n):
 
     return (_a)
 
-print(integer_to_vietnamese_numeral(213000))
+print(integer_to_vietnamese_numeral(123456789))

@@ -110,4 +110,4 @@ def integer_to_vietnamese_numeral(n, region = 'north'):
 
     return (_a)
 
-print(integer_to_vietnamese_numeral(101000))
+print(integer_to_vietnamese_numeral(10001005, 'south'))
